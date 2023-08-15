@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>3D Heart</title>
-    <style>
-        body { margin: 0; }
-        canvas { display: block; }
-    </style>
-</head>
-<body>
-<script src="https://threejs.org/build/three.js"></script>
-<script>
-    // setup
+// setup
     let scene = new THREE.Scene();
     let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
     let renderer = new THREE.WebGLRenderer();
@@ -71,6 +59,3 @@
         renderer.render(scene, camera);
     }
     animate();
-</script>
-</body>
-</html>
