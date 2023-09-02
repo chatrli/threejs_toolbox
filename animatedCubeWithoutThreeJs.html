@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    #cube-container {
+      perspective: 1200px;
+    }
+
+    .cube {
+      position: relative;
+      width: 300px;
+      transform-style: preserve-3d;
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #ccc;
+    }
+
+    .cube-face.front {
+      transform: translateZ(50px);
+    }
+    .cube-face.back {
+      transform: rotateY(180deg) translateZ(50px);
+    }
+    .cube-face.left {
+      transform: rotateY(-90deg) translateZ(50px);
+    }
+    .cube-face.right {
+      transform: rotateY(90deg) translateZ(50px);
+    }
+    .cube-face.top {
+      transform: rotateX(90deg) translateZ(50px);
+    }
+    .cube-face.bottom {
+      transform: rotateX(-90deg) translateZ(50px);
+    }
+
+  </style>
+  <title>Animated cube without three.js</title>
+</head>
+<body>
+<div id="cube-container">
+  <div class="cube">
+    <div class="cube-face front"></div>
+    <div class="cube-face back"></div>
+    <div class="cube-face left"></div>
+    <div class="cube-face right"></div>
+    <div class="cube-face top"></div>
+    <div class="cube-face bottom"></div>
+  </div>
+</div>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    const cube = document.querySelector('.cube');
+    let angle = 0;
+
+    function animate() {
+      angle += 0.5;
+      cube.style.transform = `rotate3d(1, 1, 0, ${angle}deg)`;
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  });
+
+</script>
+</body>
+</html>
